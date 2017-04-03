@@ -22,32 +22,23 @@ OpenSSL "enc -bf-ecb" command to perform Blowfish encryption
 ## ECB (Electronic CodeBook) operation mode
 In case you forgot how CBC (Cipher Block Chaining) works, here a shortest version of the CBC algorithm:
 
-Input:
-   P: The plaintext in multiple blocks
-   K: The secret key
-   IV: The Initialization Vector
-   E(K,B): The block encryption function 
+#### Input:
+P: The plaintext in multiple blocks
+K: The secret key
+IV: The Initialization Vector
+E(K,B): The block encryption function 
 
-Output:
-   C: The ciphertext in multiple blocks
+#### Output:
+C: The ciphertext in multiple blocks
 
-Algorithm - CBC (Cipher Block Chaining) Operation Mode: 
-   (P[1], P[2], P[3},...) = P    : Split plaintext into blocks
+#### Algorithm - CBC (Cipher Block Chaining) Operation Mode: 
+(P[1], P[2], P[3},...) = P: Split plaintext into blocks
 
-   C[1] = E(K, P[1] XOR IV)
-   Loop i over 2,3,...
-      C[i] = E(K, P[i] XOR C[i-1])
-   End Loop
+C[1] = E(K, P[1] XOR IV)
 
-   C = (C[1], C[2], C[3},...)    : Concatenate ciphertext blocks
-The CBC algorithm can also be illustrated by this simple diagram:
+Loop i over 2,3,...
+   C[i] = E(K, P[i] XOR C[i-1])
+End Loop
 
-Algorithm - CBC (Cipher Block Chaining) Operation Mode: 
+C = (C[1], C[2], C[3},...)    : Concatenate ciphertext blocks
 
-IV ----->|       ----->|       ----->|
-         |     /       |     /       | 
-  P[1]--XOR   / P[2]--XOR   / P[3]--XOR
-         |   /         |   /         |
-       E(K) /        E(K) /        E(K)
-         | /           | /           | 
-       C[1]          C[2]          C[3] ...
