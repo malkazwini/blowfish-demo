@@ -23,12 +23,14 @@ OpenSSL "enc -bf-ecb" command to perform Blowfish encryption
 In case you forgot how CBC (Cipher Block Chaining) works, here a shortest version of the CBC algorithm:
 
 #### Input:
+
 P: The plaintext in multiple blocks
 K: The secret key
 IV: The Initialization Vector
 E(K,B): The block encryption function 
 
 #### Output:
+
 C: The ciphertext in multiple blocks
 
 #### Algorithm - CBC (Cipher Block Chaining) Operation Mode: 
